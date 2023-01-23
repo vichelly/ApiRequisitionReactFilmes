@@ -8,3 +8,15 @@ export const Btn = styled.button`
   margin: 0 1em;
   padding: 0.25em 1em;
 `
+
+export const Filme = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 30px;
+  margin-bottom: 70px;
+`
+export const image = styled.img`
+  width: 50vh;
+  height: 70vh;
+`
