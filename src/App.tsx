@@ -1,7 +1,6 @@
-import {useEffect, useState } from "react"
-import * as S from './assets/style'
+import {useEffect, useState, useRef } from "react"
 import {Movie} from './types/Movie'
-
+import * as S from './style'
 
 function App() {
   
@@ -22,23 +21,46 @@ function App() {
     }); */
   }
 
+  const carrossel = useRef(null)
+
+  const handleLeft = (e) => {
+    e.preventDefault();
+    carrossel.current.scrollLeft -= carrossel.current.offsetWidth;
+  }
+  const handleRight = (e) => {
+    e.preventDefault();
+    carrossel.current.scrollLeft += carrossel.current.offsetWidth;
+  }
+
+
   return (
     <>
-      <h1>Filmes cartaz</h1>
-      <div>
-        <S.Btn onClick={loadMovies}>Carregar os filmes</S.Btn>
-        <h3>
-          Total de Filmes: {movies.length} 
-        </h3>
-        <div>
-          {movies.map((item, index) => (
-            <S.Filme>
-              <h2>{item.titulo}</h2>
-              <S.image src={item.avatar} alt="" />
-            </S.Filme>
-          ))}
-        </div>
-      </div>
+      <S.Wrapper>
+        <h1>Filmes cartaz</h1>
+          <S.Btn>
+            <button className="button-54" role="button" onClick={loadMovies}>Carregar os filmes</button>
+          </S.Btn>
+          <h3>
+            Total de Filmes em cartaz: {movies.length} 
+          </h3>
+            <S.ContainerCarrossel ref={carrossel} >
+              {movies.map((item, index) => (
+                <S.Filme>
+                  <div>{item.titulo}</div>
+                  <S.image src={item.avatar} alt="" />
+                </S.Filme>
+              ))}
+            </S.ContainerCarrossel>
+            <S.Buttons>
+                <div>
+                  <button onClick={handleLeft} >&lt;</button>
+                </div>
+                <div>
+                  <button onClick={handleRight} >&gt;</button>
+                </div>
+            </S.Buttons>
+      </S.Wrapper>
+      
     </>
   )
 }
