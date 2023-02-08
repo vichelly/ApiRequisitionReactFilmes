@@ -38,7 +38,6 @@ export const ContainerCarrossel = styled.div`
   overflow-x: auto;
   scroll-behavior: smooth;
   max-width: 75vw;
-  cursor: grab;
   ::-webkit-scrollbar{
     display: none;
   }
