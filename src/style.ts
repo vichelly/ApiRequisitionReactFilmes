@@ -42,6 +42,11 @@ export const ContainerCarrossel = styled.div`
     display: none;
   }
 `
+export const Carregando = styled.div`
+  font-size: 22px;
+  font-family: "Open Sans", sans-serif;
+  margin: 30px;
+`
 
 export const Buttons = styled.div`
   margin: 22px;
